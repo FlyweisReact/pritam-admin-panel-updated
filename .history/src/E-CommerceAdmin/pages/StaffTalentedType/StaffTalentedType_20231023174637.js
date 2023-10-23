@@ -372,18 +372,18 @@ const StaffTalentedType = () => {
               <img src={editData?.image} alt="" />
             </div>
 
-            {/* <Form.Group className="mb-3">
+            <Form.Group className="mb-3">
               <Form.Label>Image</Form.Label>
               <Form.Control
                 type="file"
                 onChange={(e) => ClodinaryPost(e.target.files[0], "mainImage")}
               />
-            </Form.Group> */}
+            </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Image</Form.Label>
               <Form.Control
                 type="file"
-                onChange={(e) => setMainImage(e.target.files[0])}
+                onChange={(e) => ClodinaryPost(e.target.files[0], "mainImage")}
               />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -489,8 +489,7 @@ const StaffTalentedType = () => {
               <Form.Label>e-form Image</Form.Label>
               <Form.Control
                 type="file"
-                // onChange={(e) => ClodinaryPost(e.target.files[0], "eformImage")}
-                onChange={(e) => setFormImage(e.target.files[0])}
+                onChange={(e) => ClodinaryPost(e.target.files[0], "eformImage")}
               />
             </Form.Group>
             <Form.Group className="mb-3">

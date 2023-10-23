@@ -489,7 +489,7 @@ const StaffTalentedType = () => {
               <Form.Label>e-form Image</Form.Label>
               <Form.Control
                 type="file"
-                // onChange={(e) => ClodinaryPost(e.target.files[0], "eformImage")}
+                onChange={(e) => ClodinaryPost(e.target.files[0], "eformImage")}
                 onChange={(e) => setFormImage(e.target.files[0])}
               />
             </Form.Group>

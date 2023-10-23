@@ -116,28 +116,18 @@ const StaffTalentedType = () => {
     const [eformCall, seteformCall] = useState(editData?.eformCall);
     const [eformPrivacy, seteformPrivacy] = useState(editData?.eformPrivacy);
     const [eformImage, setFormImage] = useState("");
-    const [descriptionTitleFirst, setDescriptionTitleFirst] = useState(
-      editData?.description?.[0]?.title
-    );
-    const [descriptionTitleSecond, setDescriptionTitleSecond] = useState(
-      editData?.description?.[1]?.title
-    );
-    const [descriptionTitlethird, setDescriptionTitlethird] = useState(
-      editData?.description?.[2]?.title
-    );
-    const [descriptionDescFirst, setDescriptionDescFirst] = useState(
-      editData?.description?.[0]?.desc
-    );
-    const [descriptionDescSecond, setDescriptionDescSecond] = useState(
-      editData?.description?.[1]?.desc
-    );
-    const [descriptionDescthird, setDescriptionDescthird] = useState(
-      editData?.description?.[2]?.desc
-    );
+    const [descriptionTitleFirst, setDescriptionTitleFirst] = useState(editData?.description?.[0]?.title);
+    const [descriptionTitleSecond, setDescriptionTitleSecond] = useState(editData?.description?.[1]?.title);
+    const [descriptionTitlethird, setDescriptionTitlethird] = useState(editData?.description?.[2]?.title);
+    const [descriptionDescFirst, setDescriptionDescFirst] = useState(editData?.description?.[0]?.desc);
+    const [descriptionDescSecond, setDescriptionDescSecond] = useState(editData?.description?.[1]?.desc);
+    const [descriptionDescthird, setDescriptionDescthird] = useState(editData?.description?.[2]?.desc);
+
+
 
     const payload = {
       title,
-
+      mainImage ,
       desc,
       image: mainImage,
       contactUsformTitle,
@@ -241,72 +231,69 @@ const StaffTalentedType = () => {
       e.preventDefault();
       setSubmitLoading(true);
       try {
-        // const fromData = new FormData();
-        // if (title) {
-        //   fromData.append("title", title);
-        // }
-        // if (desc) {
-        //   fromData.append("desc", desc);
-        // }
-        // if (contactUsformTitle) {
-        //   fromData.append("contactUsformTitle", contactUsformTitle);
-        // }
-        // if (contactUsformDesc) {
-        //   fromData.append("contactUsformDesc", contactUsformDesc);
-        // }
-        // if (contactUsformAvailibility) {
-        //   fromData.append(
-        //     "contactUsformAvailibility",
-        //     contactUsformAvailibility
-        //   );
-        // }
-        // if (contactUsformPrivacy) {
-        //   fromData.append("contactUsformPrivacy", contactUsformPrivacy);
-        // }
-        // if (youtubeLink) {
-        //   fromData.append("youtubeLink", youtubeLink);
-        // }
-        // if (eTitle) {
-        //   fromData.append("eTitle", eTitle);
-        // }
-        // if (eDesc) {
-        //   fromData.append("eDesc", eDesc);
-        // }
-        // if (eformWhatApp) {
-        //   fromData.append("eformWhatApp", eformWhatApp);
-        // }
-        // if (eformCall) {
-        //   fromData.append("eformCall", eformCall);
-        // }
-        // if (descriptionTitleFirst) {
-        //   fromData.append("descriptionTitle[0]", descriptionTitleFirst);
-        // }
-        // if (descriptionDescFirst) {
-        //   fromData.append("descriptionDesc[0]", descriptionDescFirst);
-        // }
-        // if (descriptionTitleFirst) {
-        //   fromData.append("descriptionTitle[1]", descriptionTitleSecond);
-        // }
-        // if (descriptionDescSecond) {
-        //   fromData.append("descriptionDesc[1]", descriptionDescSecond);
-        // }
-        // if (descriptionTitlethird) {
-        //   fromData.append("descriptionTitle[2]", descriptionTitlethird);
-        // }
-        // if (descriptionDescthird) {
-        //   fromData.append("descriptionDesc[2]", descriptionDescthird);
-        // }
-        // if (mainImage) {
-        //   fromData.append("image", mainImage);
-        // }
-        const formdataforPost = new FormData();
-        for (let key in payload) {
-          formdataforPost.append(key, payload[key]);
+        const fromData = new FormData();
+        if (title) {
+          fromData.append("title", title);
         }
+        if (desc) {
+          fromData.append("desc", desc);
+        }
+        if (contactUsformTitle) {
+          fromData.append("contactUsformTitle", contactUsformTitle);
+        }
+        if (contactUsformDesc) {
+          fromData.append("contactUsformDesc", contactUsformDesc);
+        }
+        if (contactUsformAvailibility) {
+          fromData.append(
+            "contactUsformAvailibility",
+            contactUsformAvailibility
+          );
+        }
+        if (contactUsformPrivacy) {
+          fromData.append("contactUsformPrivacy", contactUsformPrivacy);
+        }
+        if (youtubeLink) {
+          fromData.append("youtubeLink", youtubeLink);
+        }
+        if (eTitle) {
+          fromData.append("eTitle", eTitle);
+        }
+        if (eDesc) {
+          fromData.append("eDesc", eDesc);
+        }
+        if (eformWhatApp) {
+          fromData.append("eformWhatApp", eformWhatApp);
+        }
+        if (eformCall) {
+          fromData.append("eformCall", eformCall);
+        }
+        if (descriptionTitleFirst) {
+          fromData.append("descriptionTitle[0]", descriptionTitleFirst);
+        }
+        if (descriptionDescFirst) {
+          fromData.append("descriptionDesc[0]", descriptionDescFirst);
+        }
+        if (descriptionTitleFirst) {
+          fromData.append("descriptionTitle[1]", descriptionTitleSecond);
+        }
+        if (descriptionDescSecond) {
+          fromData.append("descriptionDesc[1]", descriptionDescSecond);
+        }
+        if (descriptionTitlethird) {
+          fromData.append("descriptionTitle[2]", descriptionTitlethird);
+        }
+        if (descriptionDescthird) {
+          fromData.append("descriptionDesc[2]", descriptionDescthird);
+        }
+        if (mainImage) {
+          fromData.append("image", mainImage);
+        }
+
 
         const data = await axios.post(
           `${Baseurl}api/v1/admin/addStaffTalentedType`,
-          formdataforPost,
+          fromData,
           Auth
         );
         const msg = data.data.message;
@@ -372,18 +359,11 @@ const StaffTalentedType = () => {
               <img src={editData?.image} alt="" />
             </div>
 
-            {/* <Form.Group className="mb-3">
-              <Form.Label>Image</Form.Label>
-              <Form.Control
-                type="file"
-                onChange={(e) => ClodinaryPost(e.target.files[0], "mainImage")}
-              />
-            </Form.Group> */}
             <Form.Group className="mb-3">
               <Form.Label>Image</Form.Label>
               <Form.Control
                 type="file"
-                onChange={(e) => setMainImage(e.target.files[0])}
+                onChange={(e) => ClodinaryPost(e.target.files[0], "mainImage")}
               />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -489,8 +469,7 @@ const StaffTalentedType = () => {
               <Form.Label>e-form Image</Form.Label>
               <Form.Control
                 type="file"
-                // onChange={(e) => ClodinaryPost(e.target.files[0], "eformImage")}
-                onChange={(e) => setFormImage(e.target.files[0])}
+                onChange={(e) => ClodinaryPost(e.target.files[0], "eformImage")}
               />
             </Form.Group>
             <Form.Group className="mb-3">
