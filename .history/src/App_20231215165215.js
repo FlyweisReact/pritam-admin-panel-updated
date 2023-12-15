@@ -41,7 +41,6 @@ import ContactDetails from "./E-CommerceAdmin/pages/ContactDetails/ContactDetail
 import ContactUsFormData from "./E-CommerceAdmin/pages/ContactUsFormdata/ContactUsFormData";
 import FindWorkFormData from "./E-CommerceAdmin/pages/FindWorkFormData/FindWorkFormData";
 import ContactForm from "./E-CommerceAdmin/pages/ContactForm/ContactForm";
-import Skills from "./E-CommerceAdmin/pages/Skills/Skills";
 function App() {
   return (
     <>
@@ -101,7 +100,6 @@ function App() {
         <Route path="/stafftalented" element={<StaffTalented />} />
         <Route path="/stafftalentedtype" element={<StaffTalentedType />} />
         <Route path="/contact-form" element={<ContactForm />} />
-        <Route path="/skills" element={<Skills />} />
       </Routes>
     </>
   );

@@ -7,7 +7,6 @@ import axios from "axios";
 
 const Inquires = () => {
   const [data, setData] = useState([]);
-  const [enquires, setEnquires] = useState([]);
   const [total, setTotal] = useState(0);
 
   const Baseurl = "https://pritam-backend.vercel.app/";
@@ -24,17 +23,6 @@ const Inquires = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
-
-  const fetchHandler = async () => {
-    try {
-      const { data } = await axios.get(`${Baseurl}api/v1/user/getInquires`);
-      setEnquires(data.data);
-    } catch {}
-  };
-
-  useEffect(() => {
-    fetchHandler();
   }, []);
 
   return (
@@ -85,52 +73,7 @@ const Inquires = () => {
           </>
         )}
 
-        {/* Form Inquiries */}
-        <div className="pb-4  w-full flex justify-between items-center mt-5">
-          <span
-            className="tracking-widest text-slate-900 font-semibold uppercase"
-            style={{ fontSize: "1.5rem" }}
-          >
-            Form Inquiries ( Total : {enquires?.length} )
-          </span>
-        </div>
-
-        {enquires?.length === 0 || !enquires ? (
-          <Alert>No Terms Found !</Alert>
-        ) : (
-          <>
-            <div className="overFlowCont">
-              <Table>
-                <thead>
-                  <tr>
-                    <th>Sno.</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Comment</th>
-                    <th>Date</th>
-                    <th>Slot</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {enquires?.map((i, index) => (
-                    <tr key={index}>
-                      <td>#{index + 1} </td>
-                      <td> {i.firstName} </td>
-                      <td> {i.lastName} </td>
-                      <td> {i.email} </td>
-                      <td> {i.phone} </td>
-                      <td> {i.comment} </td>
-                      <td> {i.date?.slice(0, 10)} </td>
-                      <td> {i.slot} </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            </div>
-          </>
-        )}
+        {/* For */}
       </section>
     </>
   );

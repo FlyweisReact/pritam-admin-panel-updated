@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Inquires = () => {
   const [data, setData] = useState([]);
-  const [enquires, setEnquires] = useState([]);
+  const [ enquires , setEnquires ] = useState([])
   const [total, setTotal] = useState(0);
 
   const Baseurl = "https://pritam-backend.vercel.app/";
@@ -29,13 +29,14 @@ const Inquires = () => {
   const fetchHandler = async () => {
     try {
       const { data } = await axios.get(`${Baseurl}api/v1/user/getInquires`);
-      setEnquires(data.data);
+      setEnquires(data.data)
     } catch {}
   };
 
+
   useEffect(() => {
-    fetchHandler();
-  }, []);
+    fetchHandler()
+  },[])
 
   return (
     <>
@@ -91,11 +92,10 @@ const Inquires = () => {
             className="tracking-widest text-slate-900 font-semibold uppercase"
             style={{ fontSize: "1.5rem" }}
           >
-            Form Inquiries ( Total : {enquires?.length} )
+            Form Inquiries ( Total : {total} )
           </span>
         </div>
-
-        {enquires?.length === 0 || !enquires ? (
+        {enq?.length === 0 || !data ? (
           <Alert>No Terms Found !</Alert>
         ) : (
           <>
@@ -104,26 +104,25 @@ const Inquires = () => {
                 <thead>
                   <tr>
                     <th>Sno.</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
+                    <th>FullName</th>
+                    <th>DOB</th>
+                    <th>Address</th>
                     <th>Email</th>
                     <th>Phone</th>
-                    <th>Comment</th>
-                    <th>Date</th>
-                    <th>Slot</th>
+                    <th>Created At</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {enquires?.map((i, index) => (
+                  {data?.map((i, index) => (
                     <tr key={index}>
                       <td>#{index + 1} </td>
-                      <td> {i.firstName} </td>
-                      <td> {i.lastName} </td>
+
+                      <td> {i.fullName} </td>
+                      <td> {i.dob} </td>
+                      <td> {i.address} </td>
                       <td> {i.email} </td>
                       <td> {i.phone} </td>
-                      <td> {i.comment} </td>
-                      <td> {i.date?.slice(0, 10)} </td>
-                      <td> {i.slot} </td>
+                      <td> {i.createdAt?.substr(0, 10)} </td>
                     </tr>
                   ))}
                 </tbody>

@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Inquires = () => {
   const [data, setData] = useState([]);
-  const [enquires, setEnquires] = useState([]);
+  const [ enquires , setEnquires ] = useState([])
   const [total, setTotal] = useState(0);
 
   const Baseurl = "https://pritam-backend.vercel.app/";
@@ -29,13 +29,14 @@ const Inquires = () => {
   const fetchHandler = async () => {
     try {
       const { data } = await axios.get(`${Baseurl}api/v1/user/getInquires`);
-      setEnquires(data.data);
+      setEnquires(data.data)
     } catch {}
   };
 
+
   useEffect(() => {
-    fetchHandler();
-  }, []);
+    fetchHandler()
+  },[])
 
   return (
     <>
@@ -91,7 +92,7 @@ const Inquires = () => {
             className="tracking-widest text-slate-900 font-semibold uppercase"
             style={{ fontSize: "1.5rem" }}
           >
-            Form Inquiries ( Total : {enquires?.length} )
+            Form Inquiries ( Total : {total} )
           </span>
         </div>
 
@@ -111,6 +112,7 @@ const Inquires = () => {
                     <th>Comment</th>
                     <th>Date</th>
                     <th>Slot</th>
+                    <th>Created At</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -122,7 +124,7 @@ const Inquires = () => {
                       <td> {i.email} </td>
                       <td> {i.phone} </td>
                       <td> {i.comment} </td>
-                      <td> {i.date?.slice(0, 10)} </td>
+                      <td> {i.date?.slice(0,10)} </td>
                       <td> {i.slot} </td>
                     </tr>
                   ))}
